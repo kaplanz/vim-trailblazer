@@ -1,6 +1,6 @@
 " trailblazer.vim - Relentless whitespace management
 " Maintainer:   Zakhary Kaplan <https://github.com/zakharykaplan>
-" Version:      0.1.0
+" Version:      0.1.1
 " SPDX-License-Identifier: Vim
 
 " Setup: {{{
@@ -19,11 +19,11 @@ endif
 if !exists('g:trailblazer_pattern')
   let g:trailblazer_patterns = {}
   " Highlight all trailing whitespace
-  let g:trailblazer_patterns['all']    = '/\s\+$/'
+  let g:trailblazer_patterns['all']    = '\s\+$'
   " Highlight all, but only highlight after (excluding) the cursor on current line
-  let g:trailblazer_patterns['after']  = '/\v(.*%#)@!\s+$/'
+  let g:trailblazer_patterns['after']  = '\v(.*%#)@!\s+$'
   " Highlight all, but only highlight before (including) the cursor on current line
-  let g:trailblazer_patterns['before'] = '/\v((.*%#)@!|%#)\s+$/'
+  let g:trailblazer_patterns['before'] = '\v((.*%#)@!|%#)\s+$'
 
   " Choose specific pattern to use
   let g:trailblazer_pattern = g:trailblazer_patterns['before']
@@ -55,16 +55,17 @@ command! TrailblazerEnable call trailblazer#enable()
 command! TrailblazerToggle call trailblazer#toggle()
 " }}}
 
-" Highlight: {{{
+" Highlights: {{{
 " Set exteral highlight group
 execute 'highlight ExtraWhitespace ' . g:trailblazer_color
 " Set internal highlight linking group
 highlight link TrailblazerWhitespace NONE
 " }}}
 
-" Match: {{{
+" Matches: {{{
 " Set pattern to highlight for trailing whitespace
-execute 'match TrailblazerWhitespace ' . g:trailblazer_pattern
+autocmd WinEnter * silent! call trailblazer#matchadd()
+autocmd VimEnter * silent! call trailblazer#matchadd()
 " }}}
 
 " Setup: {{{
