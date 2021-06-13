@@ -1,6 +1,6 @@
 " trailblazer.vim - Relentless whitespace management
 " Maintainer:   Zakhary Kaplan <https://github.com/zakharykaplan>
-" Version:      0.1.1
+" Version:      0.1.2
 " SPDX-License-Identifier: Vim
 
 function! trailblazer#disable()
@@ -28,7 +28,7 @@ function! trailblazer#enable()
     autocmd!
 
     " Trim trailing whitespace on write
-    autocmd BufWritePre * %s/\s\+$//e
+    autocmd BufWritePre * call trailblazer#strip()
   augroup END
 endfunction
 
@@ -42,6 +42,10 @@ function! trailblazer#set(enabled)
   else
     call trailblazer#disable()
   endif
+endfunction
+
+function! trailblazer#strip()
+  keeppatterns %s/\s\+$//e
 endfunction
 
 function! trailblazer#toggle()
