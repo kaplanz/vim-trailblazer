@@ -1,5 +1,5 @@
 " trailblazer.vim - Relentless whitespace management
-" Maintainer:   Zakhary Kaplan <https://github.com/zakharykaplan>
+" Maintainer:   Zakhary Kaplan <https://zakharykaplan.ca>
 " Version:      0.1.2
 " SPDX-License-Identifier: Vim
 
