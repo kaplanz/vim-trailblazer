@@ -1,6 +1,6 @@
 " trailblazer.vim - Relentless whitespace management
 " Maintainer:   Zakhary Kaplan <https://zakharykaplan.ca>
-" Version:      0.1.2
+" Version:      0.1.3
 " SPDX-License-Identifier: Vim
 
 " Setup: {{{
@@ -34,10 +34,10 @@ if !exists('g:trailblazer_color')
   let g:trailblazer_colors['red']     = 'ctermbg=204 guibg=#ff5370'
   let g:trailblazer_colors['green']   = 'ctermbg=115 guibg=#c3e88d'
   let g:trailblazer_colors['yellow']  = 'ctermbg=180 guibg=#ffcb6b'
-  let g:trailblazer_colors['blue']    = 'ctermbg=39 guibg=#82b1ff'
+  let g:trailblazer_colors['blue']    = 'ctermbg=39  guibg=#82b1ff'
   let g:trailblazer_colors['magenta'] = 'ctermbg=170 guibg=#c792ea'
-  let g:trailblazer_colors['cyan']    = 'ctermbg=38 guibg=#89ddff'
-  let g:trailblazer_colors['grey']    = 'ctermbg=59 guibg=#697098'
+  let g:trailblazer_colors['cyan']    = 'ctermbg=38  guibg=#89ddff'
+  let g:trailblazer_colors['grey']    = 'ctermbg=59  guibg=#697098'
   " Choose specific colour to use
   let g:trailblazer_color = g:trailblazer_colors['red']
 endif
@@ -50,9 +50,9 @@ augroup END
 " }}}
 
 " Commands: {{{
-command! TrailblazerDisable call trailblazer#disable()
-command! TrailblazerEnable call trailblazer#enable()
-command! TrailblazerToggle call trailblazer#toggle()
+command! -nargs=0 TrailblazerDisable call trailblazer#disable()
+command! -nargs=0 TrailblazerEnable  call trailblazer#enable()
+command! -nargs=0 TrailblazerToggle  call trailblazer#toggle()
 " }}}
 
 " Highlights: {{{
@@ -69,7 +69,7 @@ autocmd VimEnter * silent! call trailblazer#matchadd()
 " }}}
 
 " Setup: {{{
-call trailblazer#set(g:trailblazer_enabled)
+autocmd FileType * silent! call trailblazer#set(g:trailblazer_enabled)
 " }}}
 
 " vim:fdl=0:fdm=marker:
