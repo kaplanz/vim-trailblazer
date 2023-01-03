@@ -6,7 +6,7 @@ Install using your favorite package manager, or use Vim's built-in package
 support:
 
 ```bash
-git clone https://github.com/zakharykaplan/vim-trailblazer ~/.vim/pack/plugins/start/trailblazer.vim
+git clone https://github.com/kaplanz/vim-trailblazer ~/.vim/pack/plugins/start/trailblazer.vim
 ```
 
 ## License
